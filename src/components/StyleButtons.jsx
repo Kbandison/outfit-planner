@@ -6,7 +6,7 @@ const StyleButtons = ({ clothing, setDressCode }) => {
 
   return (
     <div>
-      <div>
+      <div className="buttons">
         {/* <button onClick={() => dispatch({ type: "casual" })}>Casual</button>
         <button onClick={() => dispatch({ type: "sport" })}>Sport</button>
         <button onClick={() => dispatch({ type: "formal" })}>Formal</button> */}

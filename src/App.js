@@ -20,8 +20,8 @@ function App() {
   return (
     <div className="App">
       <h1>Outfit Planner</h1>
-      <h4>FIND WHAT TO WEAR</h4>
-      <h4>Fashion Styles/Dress Code</h4>
+      <h5>FIND WHAT TO WEAR</h5>
+      <h2>Fashion Styles/Dress Code</h2>
       <StyleButtons setDressCode={setDressCode} />
       <div className="top">
         <h2>Top</h2>
