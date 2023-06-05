@@ -8,14 +8,14 @@ function App() {
   const [style, dispatch] = useReducer(styleReducer, clothing);
   const [dressCode, setDressCode] = useState("formal");
 
-  const casualSet = style.filter((item) => item.dressCode === dressCode);
-  const casualTop = casualSet.filter((item) => item.type === "top");
-  const casualBottom = casualSet.filter((item) => item.type === "bottom");
-  const casualShoes = casualSet.filter((item) => item.type === "shoes");
+  const dressCodeSet = style.filter((item) => item.dressCode === dressCode);
+  const dressCodeTop = dressCodeSet.filter((item) => item.type === "top");
+  const dressCodeBottom = dressCodeSet.filter((item) => item.type === "bottom");
+  const dressCodeShoes = dressCodeSet.filter((item) => item.type === "shoes");
 
-  const randomTop = Math.floor(casualTop.length * Math.random());
-  const randomBottom = Math.floor(casualBottom.length * Math.random());
-  const randomShoes = Math.floor(casualShoes.length * Math.random());
+  const randomTop = Math.floor(dressCodeTop.length * Math.random());
+  const randomBottom = Math.floor(dressCodeBottom.length * Math.random());
+  const randomShoes = Math.floor(dressCodeShoes.length * Math.random());
 
   return (
     <div className="App">
@@ -26,9 +26,9 @@ function App() {
       <div className="top">
         <h2>Top</h2>
         <div className="clothing">
-          <h3>{casualTop[randomTop].description}</h3>
+          <h3>{dressCodeTop[randomTop].description}</h3>
           <img
-            src={casualTop[randomTop].imageUrl}
+            src={dressCodeTop[randomTop].imageUrl}
             alt=""
             className="style-img"
           />
@@ -37,9 +37,9 @@ function App() {
       <div className="bottom">
         <h2>Bottom</h2>
         <div className="clothing">
-          <h3>{casualBottom[randomBottom].description}</h3>
+          <h3>{dressCodeBottom[randomBottom].description}</h3>
           <img
-            src={casualBottom[randomBottom].imageUrl}
+            src={dressCodeBottom[randomBottom].imageUrl}
             alt=""
             className="style-img"
           />
@@ -48,9 +48,9 @@ function App() {
       <div className="shoes">
         <h2>Shoes</h2>
         <div className="clothing">
-          <h3>{casualShoes[randomShoes].description}</h3>
+          <h3>{dressCodeShoes[randomShoes].description}</h3>
           <img
-            src={casualShoes[randomShoes].imageUrl}
+            src={dressCodeShoes[randomShoes].imageUrl}
             alt=""
             className="style-img"
           />
