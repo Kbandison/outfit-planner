@@ -1,23 +1,61 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import clothing from "./clothing";
+import StyleButtons from "./components/StyleButtons";
+import { useReducer, useState } from "react";
+import styleReducer from "./reducers/styleReducer";
 
 function App() {
+  const [style, dispatch] = useReducer(styleReducer, clothing);
+  const [dressCode, setDressCode] = useState("formal");
+
+  const casualSet = style.filter((item) => item.dressCode === dressCode);
+  const casualTop = casualSet.filter((item) => item.type === "top");
+  const casualBottom = casualSet.filter((item) => item.type === "bottom");
+  const casualShoes = casualSet.filter((item) => item.type === "shoes");
+
+  const randomTop = Math.floor(casualTop.length * Math.random());
+  const randomBottom = Math.floor(casualBottom.length * Math.random());
+  const randomShoes = Math.floor(casualShoes.length * Math.random());
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <h1>Outfit Planner</h1>
+      <h4>FIND WHAT TO WEAR</h4>
+      <h4>Fashion Styles/Dress Code</h4>
+      <StyleButtons setDressCode={setDressCode} />
+      <div className="top">
+        <h2>Top</h2>
+        <div className="clothing">
+          <h3>{casualTop[randomTop].description}</h3>
+          <img
+            src={casualTop[randomTop].imageUrl}
+            alt=""
+            className="style-img"
+          />
+        </div>
+      </div>
+      <div className="bottom">
+        <h2>Bottom</h2>
+        <div className="clothing">
+          <h3>{casualBottom[randomBottom].description}</h3>
+          <img
+            src={casualBottom[randomBottom].imageUrl}
+            alt=""
+            className="style-img"
+          />
+        </div>
+      </div>
+      <div className="shoes">
+        <h2>Shoes</h2>
+        <div className="clothing">
+          <h3>{casualShoes[randomShoes].description}</h3>
+          <img
+            src={casualShoes[randomShoes].imageUrl}
+            alt=""
+            className="style-img"
+          />
+        </div>
+      </div>
     </div>
   );
 }
